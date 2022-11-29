@@ -1,4 +1,46 @@
-let addButton = document.getElementById('add-button');
+// On Load Array Retrieval
+
+function onLoadFunction() {
+    if (localStorage.getItem('test')) {
+        bookArray = JSON.parse(localStorage.getItem('test'));
+    } else {
+        // No data, start with an empty array
+        bookArray = [];
+    }
+    console.table(bookArray);
+}
+
+
+// End of Data Retreival
+
+// This section is for the main page
+let modalContainer = document.getElementById('main-container-modal');
+let addBookButtonMain = document.getElementById('add-button');
+
+addBookButtonMain.addEventListener('pointerdown' , addBookFunctionMain);
+
+function addBookFunctionMain() {
+    modalContainer.style.display = 'block';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let addButton = document.getElementById('add-button-modal');
 let bookArray = [];
 let bookName = '';
 let author = '';
@@ -25,5 +67,5 @@ function addBookFunction() {
     year = document.getElementById('year').value;
     let newBook = new book(bookName , author , pages , year);
     bookArray.push(newBook);
-
+    localStorage.setItem('test' , JSON.stringify(bookArray));
 }

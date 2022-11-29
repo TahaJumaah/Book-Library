@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="newbookstyle.css">
     <script src="addNewBook.js" defer></script>
 </head>
-<body>
+<body onload="onLoadFunction()">
     
 <div class="main-container">
 
@@ -25,10 +25,13 @@
 
     <label for="year">Year</label>
     <input required id="year" type="number">
+    <!-- <div class="radiocollection">
+    <label for="read-yes">Read: Yes</label>
+    <input type="radio" name="read" id="read-yes">
+    <label for="read-no">No</label>
 
-    <label for="read">Read</label>
-    <input type="radio" name="read" id="read">
-
+    <input type="radio" name="read" id="read-no">
+    </div> -->
     <button id="add-button" type="submit">Add</button>
 </form>
 </div>
