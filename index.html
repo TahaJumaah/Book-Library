@@ -27,6 +27,7 @@
                 <p>Pages : 200</p>
                 <p>Read? : Yes</p>
             </div>
+
             <button class="delete-button" id="delete"> Delete</button>
         </div>
         
@@ -44,6 +45,7 @@
 <div class="main-container-modal" id="main-container-modal">
 
     <form id="add-book-form" action="" method="get">
+        <h2>Enter Book Details</h2>
 
     <label for="book-name">Book Name</label>
     <input required id="book-name" type="text">
@@ -57,8 +59,11 @@
     <label for="year">Year</label>
     <input required id="year" type="number">
 
-    <button id="add-button-modal" type="submit">Add</button>
-    <button id="close" value="cancel" type="reset">Cancel</button>
+    <div class="add-cancel-buttons">
+        <button id="add-button-modal" type="submit">Add</button>
+        <button id="close" value="cancel" type="reset">Cancel</button>
+    </div>
+    
 </form>
 </div>
 </dialog>

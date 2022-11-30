@@ -1,3 +1,4 @@
+
 * {
 	z-index: 0;
 	margin: 0;
@@ -14,6 +15,7 @@ body{
     align-items: center;
     width: 100vw;
     height: 100vh;
+    background-color: #eaeaea;
 }
 
 .header{
@@ -33,30 +35,57 @@ body{
 }
 
 .card{
+    background-color: #fff;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    border: 3px solid red;
     height: 50%;
     width: 25%;
     min-width: 250px;
+    box-shadow: 0px 0px 5px #00000034;
+    margin: 2%;
+    border-radius: 10px;
+
 }
 
-.delete-button{
-    flex: 1 1 2;
-    height: 50px;
+h2{
+    margin-top: 10%;
+}
+.card:hover {
+    box-shadow: 0px 30px 30px #00000033;
+    /* height: 65%;
+    width: 35%; */
+    transition: .2s
+  }
+
+button{
+    height: auto;
+    padding: 10px;
+    text-align: center;
+    width: auto;
+    margin-bottom: 10%;
+    border-radius: 40px;
+    text-decoration: none;
+    background-color: #5b6bffce ;
+    border: 2px solid #eaeaea;
+    font-size: 1em;
 }
 
 .book-title{
-    height: 30%;
+    height: 20%;
     width: 100%;
     text-align: center;
-    background-color: rgb(197, 211, 223);
+    background-color: #cccccc;
+    padding-bottom: 20%;
 }
+
 
 .book-info{
     height: 70%;
     width: 100%;
     text-align: center;
+    padding-top: 10%;
 }
 
 .add-button{
@@ -74,7 +103,34 @@ body{
     border: 3px solid red;
     height: auto;
     width: 100px;
-    background-color: rgb(211, 223, 223);
+    background-color: #d3dfdf;
     font-size: 25px;
 }
 
+/* Dialog Window Styling */
+
+dialog{
+    width: 50%;
+    height: 50%;
+    position:fixed;
+    left: 25%;
+    background-color: #eaeaea;
+}
+
+#main-container-modal{
+    display: flex;
+    flex-direction: column;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 25%;
+}
+
+input{
+    border: 2px solid #d3dfdf;
+    border-radius: 40px;
+    background-color:#d3dfdf ;
+}

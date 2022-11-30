@@ -8,9 +8,22 @@ function onLoadFunction() {
         bookArray = [];
     }
     console.table(bookArray);
+    addBooktoPage();
 }
 
 // End of Data Retreival
+
+
+// This Section is for Element Creation Functions
+let newElement = '';
+let elementName = '';
+
+function elementCreation(elementName , HTMLTag , elementClass) {
+    newElement = document.createElement(HTMLTag);
+    newElement.className = elementClass;
+    console.log(newElement)
+};
+
 
 
 // This section is for showing and hiding the Modal to add a book.
@@ -20,7 +33,7 @@ let addBookDialog = document.getElementById('add-book-dialog');
 addBookButtonMain.addEventListener('pointerdown' , showDialog);
 
 function showDialog() {
-    addBookDialog.showModal();
+    addBookDialog.show();
 };
 
 let closeButton = document.getElementById('close');
@@ -38,16 +51,18 @@ let author = '';
 let pages = 0;
 let year = 0;
 let read = true;
+let bookNumber = '';
 
 addBookForm.addEventListener('submit', addBookFunction);
 
 class book {
-    constructor(name, author, pages, year, read) {
+    constructor(name, author, pages, year, read , bookNumber) {
         this.name = name;
         this.author = author;
         this.pages = pages;
         this.year = year;
         this.read = read;
+        this.bookNumber = bookNumber;
     }
 }
 
@@ -56,9 +71,10 @@ function addBookFunction() {
     author = document.getElementById('author').value;
     pages = document.getElementById('pages').value;
     year = document.getElementById('year').value;
-    let newBook = new book(bookName , author , pages , year);
+    let newBook = new book(bookName , author , pages , year , bookNumber);
     bookArray.push(newBook);
-    // localStorage.setItem('test' , JSON.stringify(bookArray));
+    localStorage.setItem('test' , JSON.stringify(bookArray));
+    addBooktoPage();
 }
 
 
@@ -66,26 +82,19 @@ function addBookFunction() {
 // This Section is for appending Cards from the stored Array.
 let bookNameDiv = document.getElementsByTagName('h2');
 
-
-let body = document.getElementById('delete');
-body.addEventListener('click' , testFunction);
-
 let mainContainer = document.getElementById('main');
 
-
 let deleteButton = '';
-// deleteButton.addEventListener('pointerdown' , () => {this.parentNode.remove()})
 
-
-function testFunction() {
+function addBooktoPage() {
     for (let index = 0; index < bookArray.length; index++) {
-
         const book = bookArray[index];
+        book.bookNumber = index;
 
         let newBookDiv = document.createElement('div');
         newBookDiv.className = 'card';
+        newBookDiv.value = '2';
         mainContainer.appendChild(newBookDiv);
-
 
         let newBookTitleDiv = document.createElement('div');
         newBookTitleDiv.className = 'book-title'
@@ -96,10 +105,30 @@ function testFunction() {
         newBookTitle.textContent = book.name;
         newBookTitleDiv.appendChild(newBookTitle);
 
+        let newBookInfo = document.createElement('div');
+        newBookInfo.className = 'book-info';
+        newBookDiv.appendChild(newBookInfo);
+
+        let newBookInfoAuthor = document.createElement('p');
+        newBookInfoAuthor.textContent = 'Author :' + book.author;
+        newBookInfo.appendChild(newBookInfoAuthor);
+
+        let newBookInfoYear = document.createElement('p');
+        newBookInfoYear.textContent = 'Year :' + book.year;
+        newBookInfo.appendChild(newBookInfoYear);
+        let newBookInfoPages = document.createElement('p');
+        newBookInfoPages.textContent = 'Pages :' + book.pages;
+        newBookInfo.appendChild(newBookInfoPages);
+        let newBookInfoRead = document.createElement('p');
+        newBookInfoRead.textContent = 'Read :' + book.read;
+        newBookInfo.appendChild(newBookInfoRead);
+
         let newDeleteButton = document.createElement('button');
         newDeleteButton.className = 'delete-button'
+        newDeleteButton.innerText = 'Delete'
+        newDeleteButton.setAttribute('bookNumber' , index)
         newBookDiv.appendChild(newDeleteButton);
-        this.parentNode.remove();
+        // this.parentNode.remove();
 
         deleteButton = document.getElementsByClassName('delete-button');
 
@@ -110,16 +139,18 @@ function testFunction() {
 
 
     function deleteFunction() {
-        this.parentNode.remove();
-        console.log(this.parentNode.innerText);
         for (let index = 0; index < bookArray.length; index++) {
             const book = bookArray[index];
-            console.log(book.name);
-            if (this.parentNode.innerText == book.name) {
-                localStorage.setItem('test' , JSON.stringify(bookArray));
+
+            if (this.getAttribute('bookNumber') == book.bookNumber) {
+                this.parentNode.remove();
 
                 bookArray.splice(index, 1)
                 console.log('I deleted Something from the Array')
+
+                localStorage.setItem('test' , JSON.stringify(bookArray));
+
+                
                 console.table(bookArray);
                 
             }
