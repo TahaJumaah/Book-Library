@@ -33,10 +33,17 @@ body{
 }
 
 .card{
+    display: flex;
+    flex-direction: column;
     border: 3px solid red;
     height: 50%;
     width: 25%;
     min-width: 250px;
+}
+
+.delete-button{
+    flex: 1 1 2;
+    height: 50px;
 }
 
 .book-title{

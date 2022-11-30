@@ -2,11 +2,22 @@
 .main-container-modal{
     display: flex;
     flex-direction: column;
-    display: none;
+    /* display: none; */
 
 }
 
 form{
     display: flex;
     flex-direction: column;
+}
+
+:modal{
+    position: fixed;
+    top: 20%;
+    left: 20%;
+    height: 50%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
