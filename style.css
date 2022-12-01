@@ -22,6 +22,11 @@ body{
     background-color: #eaeaea;
 }
 
+a{
+    position: relative;
+    bottom: 20%;
+}
+
 .header{
     display: flex;
     flex-direction: column;
@@ -38,6 +43,12 @@ body{
     flex-wrap: nowrap;
     flex-direction: row;
     overflow:auto ;
+}
+
+::-webkit-scrollbar{
+    display: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .card{
