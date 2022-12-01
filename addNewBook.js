@@ -15,14 +15,6 @@ function onLoadFunction() {
 
 
 // This Section is for Element Creation Functions
-let newElement = '';
-let elementName = '';
-
-function elementCreation(elementName , HTMLTag , elementClass) {
-    newElement = document.createElement(HTMLTag);
-    newElement.className = elementClass;
-    console.log(newElement)
-};
 
 
 
@@ -50,19 +42,17 @@ let bookName = '';
 let author = '';
 let pages = 0;
 let year = 0;
-let read = true;
-let bookNumber = '';
+let read = '';
 
 addBookForm.addEventListener('submit', addBookFunction);
 
 class book {
-    constructor(name, author, pages, year, read , bookNumber) {
+    constructor(name, author, pages, year, read) {
         this.name = name;
         this.author = author;
         this.pages = pages;
         this.year = year;
         this.read = read;
-        this.bookNumber = bookNumber;
     }
 }
 
@@ -71,12 +61,15 @@ function addBookFunction() {
     author = document.getElementById('author').value;
     pages = document.getElementById('pages').value;
     year = document.getElementById('year').value;
-    let newBook = new book(bookName , author , pages , year , bookNumber);
+    let read = document.getElementById('read')
+    if (read.checked) {
+        read = 'Yes'
+    } else{ read = 'no'}
+    let newBook = new book(bookName , author , pages , year , read);
     bookArray.push(newBook);
     localStorage.setItem('test' , JSON.stringify(bookArray));
     addBooktoPage();
 }
-
 
 
 // This Section is for appending Cards from the stored Array.
@@ -110,17 +103,17 @@ function addBooktoPage() {
         newBookDiv.appendChild(newBookInfo);
 
         let newBookInfoAuthor = document.createElement('p');
-        newBookInfoAuthor.textContent = 'Author :' + book.author;
+        newBookInfoAuthor.textContent = 'Author : ' + book.author;
         newBookInfo.appendChild(newBookInfoAuthor);
 
         let newBookInfoYear = document.createElement('p');
-        newBookInfoYear.textContent = 'Year :' + book.year;
+        newBookInfoYear.textContent = 'Year : ' + book.year;
         newBookInfo.appendChild(newBookInfoYear);
         let newBookInfoPages = document.createElement('p');
-        newBookInfoPages.textContent = 'Pages :' + book.pages;
+        newBookInfoPages.textContent = 'Pages : ' + book.pages;
         newBookInfo.appendChild(newBookInfoPages);
         let newBookInfoRead = document.createElement('p');
-        newBookInfoRead.textContent = 'Read :' + book.read;
+        newBookInfoRead.textContent = 'Read : ' + book.read;
         newBookInfo.appendChild(newBookInfoRead);
 
         let newDeleteButton = document.createElement('button');

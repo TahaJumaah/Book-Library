@@ -12,29 +12,14 @@
 <body onload="onLoadFunction()">
     <div class="header">
         <h1>Library</h1>
+        <h2>Add the books you have read or want to read</h2>
     </div>
 
 
     <div class="main" id="main">
-        <div class="card">
-            <div class="book-title">
-                <h2>The Price of Salt</h2>
-            </div>
 
-            <div class="book-info">
-                <p>Author : Britney Spears</p>
-                <p>Year : 1998</p>
-                <p>Pages : 200</p>
-                <p>Read? : Yes</p>
-            </div>
-
-            <button class="delete-button" id="delete"> Delete</button>
-        </div>
-        
-        
-
-        <div class="add-button" >
-            <button id="add-button">Add Book</button>
+        <div class="card add-button" >
+            <button id="add-button">+</button>
         </div>
     </div>
 
@@ -58,6 +43,12 @@
 
     <label for="year">Year</label>
     <input required id="year" type="number">
+
+    <div class="read-checkbox-div">
+        <label for="read">Read</label>
+        <input type="checkbox" name="read" id="read">
+    </div>
+    
 
     <div class="add-cancel-buttons">
         <button id="add-button-modal" type="submit">Add</button>

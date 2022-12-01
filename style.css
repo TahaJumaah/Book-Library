@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 
 * {
 	z-index: 0;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+
 }
 
 
@@ -20,9 +24,11 @@ body{
 
 .header{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 30%;
+    text-align: center;
 }
 
 .main{
@@ -60,16 +66,17 @@ h2{
   }
 
 button{
-    height: auto;
-    padding: 10px;
-    text-align: center;
-    width: auto;
-    margin-bottom: 10%;
-    border-radius: 40px;
-    text-decoration: none;
-    background-color: #5b6bffce ;
-    border: 2px solid #eaeaea;
-    font-size: 1em;
+   display: block;
+   padding: 0.5em;
+   border-width: 0px;
+   outline-color: none;
+   border-radius: 2px;
+   box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+   background-color: #cccccc;
+   color: black;
+   height: auto;
+   font-size: 1em;
+   margin-bottom: 1em;
 }
 
 .book-title{
@@ -89,27 +96,27 @@ button{
 }
 
 .add-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    align-content: center;
-    border: 3px solid red;
-    height: 50%;
-    width: 25%;
-    min-width: 250px;
+    order: 2;
 }
 #add-button{
-    border: 3px solid red;
-    height: auto;
-    width: 100px;
-    background-color: #d3dfdf;
-    font-size: 25px;
+    height: 50%;
+    width: 50%;
+    background-color: #ffa4a4;
+    font-size: 5em;
+    padding: 0px;
+    margin: 0px;
 }
 
 /* Dialog Window Styling */
 
-dialog{
+@media (max-width : 500px){
+    dialog{
+        min-width: 250px;
+    }
+}
+
+#add-book-dialog{
+    flex-direction: column;
     width: 50%;
     height: 50%;
     position:fixed;
@@ -133,4 +140,22 @@ input{
     border: 2px solid #d3dfdf;
     border-radius: 40px;
     background-color:#d3dfdf ;
+    padding-left: 0.5em;
+}
+
+input:hover{
+    outline-width: 0px;
+}
+
+.add-cancel-buttons{
+    display: flex;
+    gap: 3em;
+}
+
+.read-checkbox-div{
+    display: flex;
+    gap: 1em;
+}
+label{
+    font-size: 1em;
 }
